@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'activeadmin', '~> 2.10'
 gem 'activeadmin_addons', '~> 1.9'
+gem 'cocoon'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'devise-i18n', '~> 1.10', '>= 1.10.1'
 
