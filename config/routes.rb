@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :sizes
   resources :kinds
   devise_for :admin_users, ActiveAdmin::Devise.config
