@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  kind: one
+  size: one
+  price: 1.5
+
+two:
+  product: two
+  kind: two
+  size: two
+  price: 1.5

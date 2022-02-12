@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_175336) do
+ActiveRecord::Schema.define(version: 2022_02_12_214217) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -38,9 +41,40 @@ ActiveRecord::Schema.define(version: 2022_02_12_175336) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "combinations", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "kind_id", null: false
+    t.bigint "size_id", null: false
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind_id"], name: "index_combinations_on_kind_id"
+    t.index ["product_id"], name: "index_combinations_on_product_id"
+    t.index ["size_id"], name: "index_combinations_on_size_id"
+  end
+
   create_table "kinds", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "product_instances", force: :cascade do |t|
+    t.bigint "combination_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.float "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["combination_id"], name: "index_product_instances_on_combination_id"
+    t.index ["product_id"], name: "index_product_instances_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,4 +86,9 @@ ActiveRecord::Schema.define(version: 2022_02_12_175336) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "combinations", "kinds"
+  add_foreign_key "combinations", "products"
+  add_foreign_key "combinations", "sizes"
+  add_foreign_key "product_instances", "combinations"
+  add_foreign_key "product_instances", "products"
 end
