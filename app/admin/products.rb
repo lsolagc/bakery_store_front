@@ -15,7 +15,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
   
-  permit_params :name, :description, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :_destroy]
+  permit_params :name, :description, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :price, :_destroy]
 
   show do
     panel "Product Details" do
