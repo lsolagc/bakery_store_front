@@ -1,0 +1,18 @@
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <%= link_to "BakeryStoreFront", root_path, {class: 'navbar-brand'} %>
+      <%= content_tag("span", class:'navbar-toggler collapsed mx-3', 'data-bs-toggle' => 'collapse', 'data-bs-target' => '#navbarCollapse', 'aria-controls' => "navbarCollapse", 'aria-expanded' => false, 'aria-label' => "Toggle navigation") do %>
+        <i class="bi bi-list"></i>
+      <% end %>
+      <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <%= link_to "Products", products_path, { class: 'nav-link'} %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
