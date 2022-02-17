@@ -15,7 +15,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
   
-  permit_params :name, :description, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :price, :_destroy]
+  permit_params :name, :description, :photos, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :price, :_destroy]
 
   show do
     panel "Product Details" do
@@ -30,6 +30,11 @@ ActiveAdmin.register Product do
             column "Price", :price
           end
         end
+
+        panel "Photos" do
+          render 'photos', { product: product }
+        end
+
       end
     end
   end
@@ -46,6 +51,10 @@ ActiveAdmin.register Product do
           c.input :kind
           c.input :price
         end
+      end
+      f.inputs "Photos" do
+        f.input :photos, as: :file, multiple: true
+        render 'photos', { product: product }
       end
     end
 

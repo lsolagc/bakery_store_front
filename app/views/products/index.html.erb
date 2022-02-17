@@ -2,28 +2,27 @@
 
 <h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @products.each do |product| %>
+  <div class='row d-flex align-items-center border show-product mx-0 py-2'>
+    <div class="col">
+      <%= image_tag(rails_blob_url(product.photos.first)) %>
+    </div>
+    <div class="col">
+      <%= product.name %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col text-center">
+          <%= link_to 'Show', product %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <%= link_to 'Add to cart', '#' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <br>
-
-<%= link_to 'New Product', new_product_path %>
