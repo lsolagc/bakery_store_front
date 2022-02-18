@@ -1,0 +1,22 @@
+<div id="carouselProductPhotos" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <% product.photos.each_with_index do |_photo, index| %>
+      <button type="button" data-bs-target="#carouselProductPhotos" data-bs-slide-to=<%="#{index}"%> <%= if index == 0 then "class=active" end %>></button>
+    <% end %>
+  </div>
+  <div class="carousel-inner">
+    <% product.photos.each_with_index do |photo, index| %>
+      <div class="carousel-item <%= if index == 0 then 'active' end %>">
+        <%= image_tag(photo, class: 'd-block h-50')  %>
+      </div>
+    <% end %>
+  </div>
+  <button type="button" class="carousel-control-prev" data-bs-target="#carouselProductPhotos" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button type="button" class="carousel-control-next" data-bs-target="#carouselProductPhotos" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
