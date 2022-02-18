@@ -5,7 +5,11 @@
 <% @products.each do |product| %>
   <div class='row d-flex align-items-center border show-product mx-0 py-2'>
     <div class="col">
-      <%= image_tag(rails_blob_url(product.photos.first)) %>
+      <% if product.photo.present? %>
+        <%= image_tag(rails_blob_url(product.photo) ) %>
+      <% else %>
+        "No photo"
+      <% end %>
     </div>
     <div class="col">
       <%= product.name %>

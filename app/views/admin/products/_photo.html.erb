@@ -1,0 +1,5 @@
+<% if product.photo.present? %>
+  <%= image_tag(rails_blob_url(product.photo), style: "width: 33%;border-radius:3px", class: 'thumbnail' ) %>
+<% else %>
+  "No photo"
+<% end %>
