@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class='row align-items-center border show-product mx-0 py-2'>
+  <div class="row">
+    <div class="col">
+      <%= link_to 'Back', products_path %>
+    </div>
+  </div>
+  <div class="col-8">
+    <span class='fs-1'><%= @product.name %></span>
+  </div>
+  <div class="col-4 text-end">
+    <span class=''><%= link_to "Add to cart", "#" %></span>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class=''><%= @product.description %></span>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div class="row align-items-center mt-3">
+  <div class="col">
+    <img src=<%= rails_blob_url(@product.photo)%> class='thumbnail' >
+  </div>
+</div>

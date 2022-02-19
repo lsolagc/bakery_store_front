@@ -16,7 +16,9 @@ div .show-product img {
   border-radius: 3px;
 }
 
-img .thumbnail {
+img.thumbnail {
+  max-width: 100%;
   object-fit: contain;
-  border-radius: 3px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px lightgray;
 }
