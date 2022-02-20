@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  resources :shopping_carts
   resources :products
   resources :sizes
   resources :kinds

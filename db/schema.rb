@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_173121) do
+ActiveRecord::Schema.define(version: 2022_02_20_152240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,8 +95,10 @@ ActiveRecord::Schema.define(version: 2022_02_19_173121) do
     t.float "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "shopping_cart_id"
     t.index ["combination_id"], name: "index_product_instances_on_combination_id"
     t.index ["product_id"], name: "index_product_instances_on_product_id"
+    t.index ["shopping_cart_id"], name: "index_product_instances_on_shopping_cart_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -104,6 +106,15 @@ ActiveRecord::Schema.define(version: 2022_02_19_173121) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.float "total_value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -132,4 +143,5 @@ ActiveRecord::Schema.define(version: 2022_02_19_173121) do
   add_foreign_key "combinations", "sizes"
   add_foreign_key "product_instances", "combinations"
   add_foreign_key "product_instances", "products"
+  add_foreign_key "shopping_carts", "users"
 end
