@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   resources :shopping_carts
-  resources :products
+  resources :products do
+    member do
+      get 'add_to_cart'
+    end
+  end
   resources :sizes
   resources :kinds
   devise_for :admin_users, ActiveAdmin::Devise.config
