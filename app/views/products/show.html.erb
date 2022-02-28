@@ -10,7 +10,7 @@
     <span class='fs-1'><%= @product.name %></span>
   </div>
   <div class="col-4 text-end">
-    <span class=''><%= link_to "Add to cart", "#" %></span>
+    <span class=''><%= link_to "Add to cart", add_to_cart_product_path(@product) %></span>
   </div>
   <div class="row">
     <div class="col">
