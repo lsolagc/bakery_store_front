@@ -7,12 +7,12 @@ class ProductInstance < ApplicationRecord
   delegate :combinations, :name, to: :product
   delegate :price, to: :combination
 
-  before_save :update_total_price, if: -> { self.combination.present? }
+  before_save :update_total_value, if: -> { self.combination.present? }
 
   # Callback methods
 
-  def update_total_price
-    total_price = self.quantity * self.price
+  def update_total_value
+    self.total_value = self.quantity * self.price
   end
 
 end

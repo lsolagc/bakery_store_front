@@ -3,9 +3,9 @@
 one:
   combination: one
   quantity: 1
-  total_price: 
+  total_value: 
 
 two:
   combination: two
   quantity: 1
-  total_price: 
+  total_value: 
