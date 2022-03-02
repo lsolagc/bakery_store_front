@@ -3,10 +3,10 @@
 <h1>Products</h1>
 
 <% @products.each do |product| %>
-  <div class='row align-items-center border show-product mx-0 py-2'>
+  <div class='row align-items-center border border-shadow mx-0 mb-3 py-2'>
     <div class="col">
       <% if product.photo.present? %>
-        <%= image_tag(rails_blob_url(product.photo) ) %>
+        <%= image_tag(rails_blob_url(product.photo), class: 'thumbnail' ) %>
       <% else %>
         "No photo"
       <% end %>
