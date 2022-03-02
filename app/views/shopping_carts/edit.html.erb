@@ -1,6 +1,14 @@
 <h1>Editing Shopping Cart</h1>
 
-<%= render 'form', shopping_cart: @shopping_cart %>
+  <% if @shopping_cart.product_instances.empty? %>
+    <div class="col card shadow fs-3 align-items-center py-2 mb-3">
+      <p class="mb-0" >Your shopping cart is empty!</p>
+    </div>
+  <% else %>
+    <%= render 'form', shopping_cart: @shopping_cart %>
+  <% end %>
 
 <%= link_to 'Show', @shopping_cart %> |
 <%= link_to 'Back', shopping_carts_path %>
+
+<%= javascript_pack_tag 'product_instance', 'data-turbolinks-track': 'reload' %>

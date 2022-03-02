@@ -3,7 +3,60 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="border border-shadow">
+    <% @shopping_cart.product_instances.each do |product_instance| %>
+      <%= f.simple_fields_for :product_instances do |p| %>
+        <div class="row gap-3 align-items-center mx-0 py-2" data-product-instance=<%= product_instance.id %> >
+          <div class="col-md d-none d-md-block">
+            <% if product_instance.product.photo.present? %>
+              <%= image_tag(rails_blob_url(product_instance.product.photo), class: 'thumbnail' ) %>
+            <% else %>
+              "No photo"
+            <% end %>
+          </div>
+          <div class="col-md">
+            <%= product_instance.product.name %>
+          </div>
+          <div class="col-md">
+            <%= p.input :combination, 
+                        as: :select, 
+                        collection: product_instance.combinations, 
+                        selected: product_instance.combination.presence,
+                        prompt: "Select your product combination",
+                        label_html: { class: 'd-md-none d-block' } %>
+          </div>
+          <div class="col-md">
+            <%= p.input :quantity, 
+                        label_html: { class: 'd-md-none d-block' },
+                        input_html: { class: 'w-100', value: product_instance.quantity } %>
+          </div>
+          <div class="col-md">
+            <%= p.input :total_value,
+                        label_html: { class: 'd-md-none d-block' },
+                        input_html: { disabled: true, 
+                                      class: 'w-100', 
+                                      value: number_to_currency(product_instance.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
+          </div>
+          <div class="row align-items-center mx-0">
+            <div class="col">
+              <%= link_to product_instance_path(product_instance), method: "delete" do %>
+                <span class="bi bi-trash">Remove from cart</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <hr/>
+    <% end %>
+    <div class="row align-items-center mx-0 mb-3">
+      <div class="col">
+        <%= f.input :total_value,
+                    as: :string,
+                    input_html: { disabled: true, 
+                                  class: 'w-100', 
+                                  value: number_to_currency(@shopping_cart.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
