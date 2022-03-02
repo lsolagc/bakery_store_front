@@ -1,0 +1,2 @@
+module ProductInstancesHelper
+end

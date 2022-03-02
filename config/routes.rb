@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  resources :product_instances, only: [:destroy] do
+    member do
+      get 'set_quantity'
+      get 'set_combination'
+    end
+  end
   resources :shopping_carts
   resources :products do
     member do
