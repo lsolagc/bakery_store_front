@@ -3,15 +3,18 @@
   <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
     <div class="container-fluid">
       <%= link_to "BakeryStoreFront", root_path, {class: 'navbar-brand'} %>
-      <div class="d-flex flex-row order-2 order-md-3">
+      <div class="d-flex flex-row order-2 order-md-3 align-items-center">
         <ul class="navbar-nav flex-row">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart) %>
+              <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link mx-2' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: "delete", class: 'nav-link mx-2' %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, {class: 'nav-link'} %>
+              <%= link_to "Login", new_user_session_path, {class: 'nav-link mx-2'} %>
             </li>
           <% end %>
         </ul>
