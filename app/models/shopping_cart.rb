@@ -7,7 +7,7 @@ class ShoppingCart < ApplicationRecord
 
   before_save :update_total_value
 
-  validates :due_date, presence: true
+  validates :due_date, presence: true, if: -> { self.product_instances.present? && self.product_instances.all?{ |pi| pi.combination.present? && pi.total_value.present? } }
 
   # Callback methods
 

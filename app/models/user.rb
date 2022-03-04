@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :shopping_carts
     
   def shopping_cart
-    self.shopping_carts.detect{ |sc| sc.open? } || self.shopping_carts.create(user: self, status: 'open')
+    self.shopping_carts.detect{ |sc| sc.open? } || self.shopping_carts.create!(user: self, status: 'open')
   end
 end
