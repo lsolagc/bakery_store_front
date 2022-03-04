@@ -7,6 +7,8 @@ class ShoppingCart < ApplicationRecord
 
   before_save :update_total_value
 
+  validates :due_date, presence: true
+
   # Callback methods
 
   def update_total_value

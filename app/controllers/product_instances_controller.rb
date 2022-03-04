@@ -6,7 +6,7 @@ class ProductInstancesController < ApplicationController
     respond_to do |format|
       if @product_instance.save
         format.json { render :set_quantity, status: :ok }
-        @product_instance.shopping_cart.save!
+        @product_instance.shopping_cart.save!(validate: false)
       else
         format.json { render json: @product_instance.errors, status: :unprocessable_entity }
       end
@@ -18,7 +18,7 @@ class ProductInstancesController < ApplicationController
     respond_to do |format|
       if @product_instance.save
         format.json { render :set_combination, status: :ok }
-        @product_instance.shopping_cart.save!
+        @product_instance.shopping_cart.save!(validate: false)
       else
         format.json { render json: @product_instance.errors, status: :unprocessable_entity }
       end
@@ -27,7 +27,7 @@ class ProductInstancesController < ApplicationController
 
   def destroy
     @product_instance.destroy
-    @product_instance.shopping_cart.save!
+    @product_instance.shopping_cart.save!(validate: false)
     redirect_to edit_shopping_cart_path(@product_instance.shopping_cart)
   end
 

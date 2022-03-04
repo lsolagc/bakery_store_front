@@ -38,7 +38,7 @@
                                       value: number_to_currency(product_instance.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
           </div>
           <div class="row align-items-center mx-0">
-            <div class="col">
+            <div class="col text-end">
               <%= link_to product_instance_path(product_instance), method: "delete" do %>
                 <span class="bi bi-trash">Remove from cart</span>
               <% end %>
@@ -48,18 +48,24 @@
       <% end %>
       <hr/>
     <% end %>
-    <div class="row align-items-center mx-0 mb-3">
-      <div class="col">
+    <div class="row align-items-center mx-0 mb-3 gap-3">
+      <div class="col-md">
         <%= f.input :total_value,
                     as: :string,
                     input_html: { disabled: true, 
                                   class: 'w-100', 
                                   value: number_to_currency(@shopping_cart.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
       </div>
+      <div class="col-md">
+        <%= f.input :due_date,
+                    as: :datetime,
+                    html5: true, 
+                    input_html: { min: DateTime.current + 1.day, max: DateTime.current + 1.month } %>
+      </div>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="my-3">
+    <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 <% end %>
