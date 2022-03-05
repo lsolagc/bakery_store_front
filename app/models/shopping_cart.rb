@@ -9,10 +9,22 @@ class ShoppingCart < ApplicationRecord
 
   validates :due_date, presence: true, if: -> { self.product_instances.present? && self.product_instances.all?{ |pi| pi.combination.present? && pi.total_value.present? } }
 
+  scope :ordered_or_further, -> { where("status > 0") }
+
   # Callback methods
 
   def update_total_value
     self.total_value = self.product_instances.pluck(:total_value).compact.reduce(:+)
+  end
+
+  # Instance methods
+
+  def disabled_inputs?
+    !editable?
+  end
+
+  def editable?
+    self.open?
   end
 
 end

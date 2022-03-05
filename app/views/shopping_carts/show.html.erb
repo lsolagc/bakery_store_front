@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %> |
+<h1>Showing Shopping Cart #<%= @shopping_cart.id %></h1>
+
+<%= render partial: 'form', shopping_cart: @shopping_cart %>
+
 <%= link_to 'Back', shopping_carts_path %>

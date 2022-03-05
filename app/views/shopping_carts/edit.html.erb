@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Editing Shopping Cart</h1>
 
   <% if @shopping_cart.product_instances.empty? %>
@@ -7,8 +9,5 @@
   <% else %>
     <%= render 'form', shopping_cart: @shopping_cart %>
   <% end %>
-
-<%= link_to 'Show', @shopping_cart %> |
-<%= link_to 'Back', shopping_carts_path %>
 
 <%= javascript_pack_tag 'product_instance', 'data-turbolinks-track': 'reload' %>

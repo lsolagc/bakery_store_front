@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@shopping_cart) do |f| %>
+<%= simple_form_for(@shopping_cart, url: finalize_order_shopping_cart_url, method: 'post' ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -23,12 +23,13 @@
                         collection: product_instance.combinations, 
                         selected: product_instance.combination.presence,
                         prompt: "Select your product combination",
-                        label_html: { class: 'd-md-none d-block' } %>
+                        label_html: { class: 'd-md-none d-block' },
+                        input_html: { disabled: @shopping_cart.disabled_inputs? } %>
           </div>
           <div class="col-md">
             <%= p.input :quantity, 
                         label_html: { class: 'd-md-none d-block' },
-                        input_html: { class: 'w-100', value: product_instance.quantity } %>
+                        input_html: { class: 'w-100', value: product_instance.quantity, disabled: @shopping_cart.disabled_inputs? } %>
           </div>
           <div class="col-md">
             <%= p.input :total_value,
@@ -37,13 +38,15 @@
                                       class: 'w-100', 
                                       value: number_to_currency(product_instance.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
           </div>
-          <div class="row align-items-center mx-0">
-            <div class="col text-end">
-              <%= link_to product_instance_path(product_instance), method: "delete" do %>
-                <span class="bi bi-trash">Remove from cart</span>
-              <% end %>
+          <% if @shopping_cart.editable? %>
+            <div class="row align-items-center mx-0">
+              <div class="col text-end">
+                <%= link_to product_instance_path(product_instance), method: "delete" do %>
+                  <span class="bi bi-trash">Remove from cart</span>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
       <hr/>
@@ -60,12 +63,14 @@
         <%= f.input :due_date,
                     as: :datetime,
                     html5: true, 
-                    input_html: { min: DateTime.current + 1.day, max: DateTime.current + 1.month } %>
+                    input_html: { min: DateTime.current + 1.day, max: DateTime.current + 1.month, disabled: @shopping_cart.disabled_inputs? } %>
       </div>
     </div>
   </div>
 
   <div class="my-3">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <% if shopping_cart.editable? %>
+      <%= f.button :submit, value: 'Finalize order', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 <% end %>

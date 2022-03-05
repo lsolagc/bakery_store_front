@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       get 'set_combination'
     end
   end
-  resources :shopping_carts
+  resources :shopping_carts, except: [:new] do
+    member do
+      post 'finalize_order'
+    end
+  end
   resources :products do
     member do
       get 'add_to_cart'

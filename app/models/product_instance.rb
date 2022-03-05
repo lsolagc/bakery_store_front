@@ -15,4 +15,10 @@ class ProductInstance < ApplicationRecord
     self.total_value = self.quantity * self.price
   end
 
+  # Instance methods
+
+  def to_s
+    "#{product.name} - #{combination}"
+  end
+
 end
