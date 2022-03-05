@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   resources :shopping_carts, except: [:new] do
     member do
-      post 'finalize_order'
+      post  'finalize_order'
+      get   'cancel_order'
     end
   end
   resources :products do

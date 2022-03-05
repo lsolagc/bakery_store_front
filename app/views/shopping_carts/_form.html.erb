@@ -73,5 +73,8 @@
     <% if @shopping_cart.editable? %>
       <%= f.button :submit, value: 'Finalize order', class: 'btn btn-primary' %>
     <% end %>
+    <% if @shopping_cart.cancellable_by_owner? %>
+      <%= link_to "Cancel my order", cancel_order_shopping_cart_path(@shopping_cart), type: 'button', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 <% end %>

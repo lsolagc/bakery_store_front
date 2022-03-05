@@ -1,22 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class='<%= notice["class"] %>'>
+    <b><%= notice["message"] %></b>
+  </div>
+<% end %>
 
 <h1>Orders</h1>
 
 <div class='row align-items-center border mx-0 py-2'>
   <div class="col col-sm-2 col-md-2">
-    ID
+    <b>ID</b>
   </div>
   <div class="col col-sm-4 col-md-5 d-none d-sm-block">
-    Order contents
+    <b>Order contents</b>
   </div>
   <div class="col">
-    Order status
+    <b>Order status</b>
   </div>
   <div class="col"></div>
 </div>
 
 <% @shopping_carts.each do |shopping_cart| %>
-  <div class='row align-items-center border border-shadow mx-0 mb-3 py-2'>
+  <div class='row align-items-center border mx-0 mb-1 py-2'>
     <div class="col col-sm-2 col-md-2">
       #<%= shopping_cart.id %>
     </div>
@@ -30,7 +34,7 @@
       <% end %>
     </div>
     <div class="col">
-      <%= shopping_cart.status %>
+      <span class="<%= status_badge_style(shopping_cart) %>"><%= shopping_cart.status %></span>
     </div>
     <div class="col text-center">
       <%= link_to "See details", shopping_cart_path(shopping_cart) %>

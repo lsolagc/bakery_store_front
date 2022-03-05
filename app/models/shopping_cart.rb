@@ -31,4 +31,8 @@ class ShoppingCart < ApplicationRecord
     self.open?
   end
 
+  def cancellable_by_owner?
+    self.ordered?
+  end
+
 end

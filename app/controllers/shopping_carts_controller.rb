@@ -1,4 +1,6 @@
 class ShoppingCartsController < InheritedResources::Base
+  include ShoppingCartsHelper
+  
   before_action :authenticate_user!
 
   def index
@@ -34,6 +36,17 @@ class ShoppingCartsController < InheritedResources::Base
         format.json { render json: @shopping_cart.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def cancel_order
+    @shopping_cart = ShoppingCart.find(params[:id])
+    if @shopping_cart.ordered?
+      @shopping_cart.canceled!
+      notice = {class: "alert alert-warning", message: "Your order was successfully canceled."}
+    else
+      notice = {class: "alert alert-danger", message: "Your order has already started being made. Please contact us in order to check if your order is still cancellable."}
+    end
+    redirect_to shopping_cart_path(@shopping_cart), notice: notice
   end
 
   private
