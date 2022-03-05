@@ -7,6 +7,13 @@ class ProductInstance < ApplicationRecord
   delegate :combinations, :name, to: :product
   delegate :price, to: :combination
 
+  validates :combination, presence: true, on: :finalize_order
+  
+  validates :quantity, presence: true
+  validates_numericality_of :quantity, only_integer: true, greater_than: 0
+  validates :total_value, presence: true
+  validates_numericality_of :total_value, greater_than: 0, on: :finalize_order
+
   before_save :update_total_value, if: -> { self.combination.present? }
 
   # Callback methods

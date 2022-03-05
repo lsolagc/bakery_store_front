@@ -7,11 +7,15 @@ class ShoppingCart < ApplicationRecord
 
   before_save :update_total_value
 
-  validates :due_date, presence: true, if: -> { self.product_instances.present? && self.product_instances.all?{ |pi| pi.combination.present? && pi.total_value.present? } }
-
-  scope :ordered_or_further, -> { where("status > 0") }
+  validate :validate_product_instances, on: :finalize_order
+  validates :due_date, presence: true, on: :finalize_order
 
   # Callback methods
+
+  def validate_product_instances
+    return if self.product_instances.all?{ |pi| pi.valid?(:finalize_order)}
+    self.errors.add(:product_instances, 'are invalid')
+  end
 
   def update_total_value
     self.total_value = self.product_instances.pluck(:total_value).compact.reduce(:+)

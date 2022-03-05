@@ -6,7 +6,7 @@ class ProductsController < InheritedResources::Base
       product_instance.quantity += 1
       product_instance.save!
     else
-      ProductInstance.create!(shopping_cart: current_user.shopping_cart, product: set_product, quantity: 1)
+      ProductInstance.create!(shopping_cart: current_user.shopping_cart, product: set_product, quantity: 1, total_value: 0)
     end
     redirect_to edit_shopping_cart_path(current_user.shopping_cart)
   end

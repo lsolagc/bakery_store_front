@@ -23,6 +23,7 @@
                         collection: product_instance.combinations, 
                         selected: product_instance.combination.presence,
                         prompt: "Select your product combination",
+                        error: product_instance.errors['combination'].present? ? "Combination #{product_instance.errors['combination'].join(',')}" : nil,
                         label_html: { class: 'd-md-none d-block' },
                         input_html: { disabled: @shopping_cart.disabled_inputs? } %>
           </div>
@@ -69,7 +70,7 @@
   </div>
 
   <div class="my-3">
-    <% if shopping_cart.editable? %>
+    <% if @shopping_cart.editable? %>
       <%= f.button :submit, value: 'Finalize order', class: 'btn btn-primary' %>
     <% end %>
   </div>

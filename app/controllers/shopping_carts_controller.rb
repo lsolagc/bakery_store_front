@@ -2,7 +2,7 @@ class ShoppingCartsController < InheritedResources::Base
   before_action :authenticate_user!
 
   def index
-    @shopping_carts = ShoppingCart.ordered_or_further
+    @shopping_carts = ShoppingCart.where.not(status: 'open')
   end
 
   def show
@@ -24,8 +24,16 @@ class ShoppingCartsController < InheritedResources::Base
   def finalize_order
     @shopping_cart = current_user.shopping_cart
     @shopping_cart.attributes = shopping_cart_params.to_h
-    @shopping_cart.ordered!
-    redirect_to shopping_cart_path(@shopping_cart)
+    respond_to do |format|
+      if @shopping_cart.save(context: :finalize_order)
+        @shopping_cart.ordered!
+        format.html { redirect_to shopping_cart_path(@shopping_cart) }
+        format.json { render :show, status: :created, location: @shopping_cart }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @shopping_cart.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
