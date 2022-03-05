@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class='<%= notice["class"] %>'>
+    <b><%= notice["message"] %></b>
+  </div>
+<% end %>
 
 <h1>Sizes</h1>
 
