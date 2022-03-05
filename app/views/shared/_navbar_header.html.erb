@@ -18,14 +18,17 @@
             </li>
           <% end %>
         </ul>
-        <%= content_tag("span", class:'navbar-toggler collapsed mr-3', 'data-bs-toggle' => 'collapse', 'data-bs-target' => '#navbarCollapse', 'aria-controls' => "navbarCollapse", 'aria-expanded' => false, 'aria-label' => "Toggle navigation") do %>
+        <span class="navbar-toggler collapsed mr-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list"></i>
-        <% end %>
+        </span>
       </div>
       <div class="navbar-collapse collapse order-3 order-md-2" id="navbarCollapse" style="">
         <ul class="navbar-nav me-auto mb-md-0 text-end">
           <li class="nav-item">
             <%= link_to "Products", products_path, { class: 'nav-link'} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My orders", shopping_carts_path, class: 'nav-link' %>
           </li>
         </ul>
       </div>
