@@ -7,7 +7,7 @@
 <h1>Orders</h1>
 
 <div class='row align-items-center border mx-0 py-2'>
-  <div class="col col-sm-2 col-md-2">
+  <div class="col-2 col-sm-2 col-md-2">
     <b>ID</b>
   </div>
   <div class="col col-sm-4 col-md-5 d-none d-sm-block">
@@ -21,7 +21,7 @@
 
 <% @shopping_carts.each do |shopping_cart| %>
   <div class='row align-items-center border mx-0 mb-1 py-2'>
-    <div class="col col-sm-2 col-md-2">
+    <div class="col-2 col-sm-2 col-md-2">
       #<%= shopping_cart.id %>
     </div>
     <div class="col col-sm-4 col-md-5 d-none d-sm-block">
@@ -34,7 +34,8 @@
       <% end %>
     </div>
     <div class="col">
-      <span class="<%= status_badge_style(shopping_cart) %>"><%= shopping_cart.status %></span>
+      <span class="<%= status_badge_style(shopping_cart) %>"><%= shopping_cart.status.humanize %></span>
+      <span class="<%= payment_status_badge_style(shopping_cart) %>"><%= shopping_cart.payment_status.humanize %></span>
     </div>
     <div class="col text-center">
       <%= link_to "See details", shopping_cart_path(shopping_cart) %>

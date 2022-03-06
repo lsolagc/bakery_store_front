@@ -7,10 +7,21 @@
 <div class='row align-items-center'>
   <div class="col">
     <h1>Showing Order #<%= @shopping_cart.id %></h1>
-    <h3><span class="<%= status_badge_style(@shopping_cart) %>"><%= @shopping_cart.status %></span></h3>
+    <h3>
+      <span class="<%= status_badge_style(@shopping_cart) %>"><%= @shopping_cart.status.humanize %></span>
+      <span class="<%= payment_status_badge_style(@shopping_cart) %>"><%= @shopping_cart.payment_status.humanize %></span>
+    </h3>
   </div>
 </div>
 
 <%= render partial: 'form', shopping_cart: @shopping_cart %>
+
+<% if pix_payments_enabled? && !@shopping_cart.paid? %>
+  <div class="row align-items-center mb-3">
+    <div class="col">
+      <%= button_to "Generate QRCode for payment", pix_payments_api_request(@shopping_cart), target: '_blank', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'Back', shopping_carts_path %>

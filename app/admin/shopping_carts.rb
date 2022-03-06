@@ -14,7 +14,7 @@ ActiveAdmin.register ShoppingCart do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
-  permit_params :user_id, :status, :total_value
+
+  permit_params :user_id, :status, :total_value, :payment_status
 
 end
