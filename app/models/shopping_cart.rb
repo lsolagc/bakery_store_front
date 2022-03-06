@@ -8,6 +8,7 @@ class ShoppingCart < ApplicationRecord
   before_save :update_total_value
 
   validate :validate_product_instances, on: :finalize_order
+  validate  :due_date_minimum_time, on: :finalize_order
   validates :due_date, presence: true, on: :finalize_order
 
   # Callback methods
@@ -15,6 +16,10 @@ class ShoppingCart < ApplicationRecord
   def validate_product_instances
     return if self.product_instances.all?{ |pi| pi.valid?(:finalize_order)}
     self.errors.add(:product_instances, 'are invalid')
+  end
+
+  def due_date_minimum_time
+    self.errors.add(:due_date, 'must be at least 24 hours in the future') if self.due_date < (DateTime.current + 1.day).at_beginning_of_minute
   end
 
   def update_total_value
