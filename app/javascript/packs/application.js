@@ -17,3 +17,5 @@ require("@nathanvda/cocoon")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');

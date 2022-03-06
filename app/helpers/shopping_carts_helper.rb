@@ -1,4 +1,5 @@
 module ShoppingCartsHelper
+  include ApplicationHelper
 
   def status_badge_style(shopping_cart)
     shopping_cart.canceled? ? 'badge bg-danger' : 'badge bg-info'

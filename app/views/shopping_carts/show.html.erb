@@ -19,7 +19,39 @@
 <% if pix_payments_enabled? && !@shopping_cart.paid? %>
   <div class="row align-items-center mb-3">
     <div class="col">
-      <%= button_to "Generate QRCode for payment", pix_payments_api_request(@shopping_cart), target: '_blank', class: 'btn btn-primary' %>
+      <button name="button" id="buttonPixPayment" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPixPayment">
+        Generate QR Code for payment
+      </button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPixPayment" tabindex="-1" aria-labelledby="modalPixPaymentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalPixPaymentLabel">Payment - QR Code</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span hidden></span>
+          <div class="alert alert-warning">
+            Please remember to check your payment details before you finish. We are not responsible for transfers made by mistake to other recipients.
+          </div>
+          <div class="row text-center">
+            <div class="col">
+              <img id="imagePixQrCode" src="<%= pix_payments_api_request(@shopping_cart) %>" >
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col" >
+              <span id="spanPixBrCode" hidden="hidden"><%= @brcode %></span>
+              <a class="btn btn-primary copyable" tabindex="0" data-clipboard-target="#spanPixBrCode" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Copied!">
+                  Copy payment data to clipboard
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 class ShoppingCartsController < InheritedResources::Base
   include ShoppingCartsHelper
-  
+
   before_action :authenticate_user!
 
   def index
@@ -10,15 +10,17 @@ class ShoppingCartsController < InheritedResources::Base
   def show
     @shopping_cart = ShoppingCart.find(params[:id])
     if @shopping_cart.open?
-      redirect_to edit_shopping_cart_path(@shopping_cart) 
+      redirect_to edit_shopping_cart_path(@shopping_cart)
       return
     end
+    response = HTTParty.get(pix_payments_api_request(@shopping_cart))
+    @brcode = response.headers['brcode']
   end
-  
+
   def edit
     @shopping_cart = ShoppingCart.find(params[:id])
     if !@shopping_cart.open?
-      redirect_to shopping_cart_path(@shopping_cart) 
+      redirect_to shopping_cart_path(@shopping_cart)
       return
     end
   end
