@@ -6,7 +6,7 @@
       <div class="d-flex flex-row order-2 order-md-3 align-items-center">
         <ul class="navbar-nav flex-row">
           <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item d-none d-sm-block">
               <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link mx-2' %>
             </li>
             <li class="nav-item">
@@ -26,6 +26,9 @@
         <ul class="navbar-nav me-auto mb-md-0 text-end">
           <li class="nav-item">
             <%= link_to "Products", products_path, { class: 'nav-link'} %>
+          </li>
+          <li class="nav-item d-block d-sm-none">
+            <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to "My orders", shopping_carts_path, class: 'nav-link' %>
