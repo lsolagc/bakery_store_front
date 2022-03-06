@@ -5,11 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shopping_carts
-    
+
+  validates :name, :surname, presence: true
+
   # Instance methods
 
-  def to_s
-    self.email
+  def display_name
+    self.full_name.presence || self.email
+  end
+
+  def full_name
+    "#{self.name} #{self.surname}"
   end
 
   def shopping_cart

@@ -9,7 +9,7 @@ include ApplicationHelper
 
 seeds_message("Creating users") do
   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && AdminUser.find_by_email('admin@example.com').nil?
-  User.create!(email: 'user@example.com', password: 'Teste123', password_confirmation: 'Teste123') if Rails.env.development? && User.find_by_email('user@example.com').nil?
+  User.create!(name: "Dummy", surname: "User", email: 'user@example.com', password: 'Teste123', password_confirmation: 'Teste123') if Rails.env.development? && User.find_by_email('user@example.com').nil?
 end
 
 seeds_message("Creating kinds") do
@@ -37,25 +37,25 @@ end
 seeds_message("Creating products") do
   products = [
     { name: "Bolo A",
-      description: "Descrição do Bolo A", 
+      description: "Descrição do Bolo A",
     },
     { name: "Bolo B",
-      description: "Descrição do Bolo B", 
+      description: "Descrição do Bolo B",
     }
   ]
-  
+
   products.each do |attributes|
     next if Product.find_by_name(attributes[:name])
     Product.create(attributes)
   end
-  
+
   combinations = [
     { product: Product.find_by_name("Bolo A"), kind: Kind.find_by_name("Piscina"), size: Size.find_by_name("Pequeno"), price: 10 },
     { product: Product.find_by_name("Bolo A"), kind: Kind.find_by_name("Vulcão"), size: Size.find_by_name("Pequeno"), price: 15 },
     { product: Product.find_by_name("Bolo B"), kind: Kind.find_by_name("Piscina"), size: Size.find_by_name("Grande"), price: 20 },
     { product: Product.find_by_name("Bolo B"), kind: Kind.find_by_name("Vulcão"), size: Size.find_by_name("Grande"), price: 30 },
   ]
-  
+
   combinations.each do |attributes|
     next if Combination.where(attributes).count > 0
     Combination.create(attributes)
@@ -66,7 +66,7 @@ seeds_message("Creating products") do
     File.open(filename, 'rb') do |file|
       product = Product.find_by_name(attachment_name)
       product.photo = ActiveStorage::Blob.create_and_upload!(io: file, content_type: 'image/jpeg', filename: attachment_name)
-      product.save!      
+      product.save!
     end
   end
 
