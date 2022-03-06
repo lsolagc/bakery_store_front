@@ -18,9 +18,9 @@
             <%= product_instance.product.name %>
           </div>
           <div class="col-md">
-            <%= p.input :combination, 
-                        as: :select, 
-                        collection: product_instance.combinations, 
+            <%= p.input :combination,
+                        as: :select,
+                        collection: product_instance.combinations.map{ |c| [c.display_name, c.id] },
                         selected: product_instance.combination.presence,
                         prompt: "Select your product combination",
                         error: product_instance.errors['combination'].present? ? "Combination #{product_instance.errors['combination'].join(',')}" : nil,
@@ -28,15 +28,15 @@
                         input_html: { disabled: @shopping_cart.disabled_inputs? } %>
           </div>
           <div class="col-md">
-            <%= p.input :quantity, 
+            <%= p.input :quantity,
                         label_html: { class: 'd-md-none d-block' },
                         input_html: { class: 'w-100', value: product_instance.quantity, disabled: @shopping_cart.disabled_inputs? } %>
           </div>
           <div class="col-md">
             <%= p.input :total_value,
                         label_html: { class: 'd-md-none d-block' },
-                        input_html: { disabled: true, 
-                                      class: 'w-100', 
+                        input_html: { disabled: true,
+                                      class: 'w-100',
                                       value: number_to_currency(product_instance.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
           </div>
           <% if @shopping_cart.editable? %>
@@ -56,15 +56,15 @@
       <div class="col-md">
         <%= f.input :total_value,
                     as: :string,
-                    input_html: { disabled: true, 
-                                  class: 'w-100', 
+                    input_html: { disabled: true,
+                                  class: 'w-100',
                                   value: number_to_currency(@shopping_cart.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
       </div>
       <div class="col-md">
         <%= f.input :due_date,
                     as: :datetime,
-                    html5: true, 
-                    input_html: { min: DateTime.current + 1.day, max: DateTime.current + 1.month, disabled: @shopping_cart.disabled_inputs? } %>
+                    html5: true,
+                    input_html: { min: Date.current + 1.day, max: Date.current + 1.month, disabled: @shopping_cart.disabled_inputs? } %>
       </div>
     </div>
   </div>

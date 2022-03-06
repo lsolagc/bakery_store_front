@@ -6,7 +6,7 @@ class Combination < ApplicationRecord
   validates :price, presence: true
 
   # Instance methods
-  def to_s
+  def display_name
     "#{self.kind.name} (#{self.size.name})"
   end
 

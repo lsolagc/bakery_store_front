@@ -24,8 +24,8 @@ class ProductInstance < ApplicationRecord
 
   # Instance methods
 
-  def to_s
-    "#{product.name} - #{combination}"
+  def display_name
+    "#{product.name} - #{combination.display_name}"
   end
 
 end
