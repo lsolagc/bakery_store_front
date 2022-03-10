@@ -18,4 +18,4 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+window.bootstrap = require('bootstrap');
