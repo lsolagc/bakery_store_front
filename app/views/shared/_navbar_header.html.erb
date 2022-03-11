@@ -10,6 +10,9 @@
               <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link mx-2' %>
             </li>
             <li class="nav-item">
+              <%= link_to "My account", edit_user_registration_path, class: 'nav-link mx-2' %>
+            </li>
+            <li class="nav-item d-none d-sm-block">
               <%= link_to "Logout", destroy_user_session_path, method: "delete", class: 'nav-link mx-2' %>
             </li>
           <% else %>
@@ -33,6 +36,9 @@
             </li>
             <li class="nav-item">
               <%= link_to "My orders", shopping_carts_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item d-block d-sm-none">
+              <%= link_to "Logout", destroy_user_session_path, method: "delete", class: 'nav-link' %>
             </li>
           <% end %>
         </ul>
