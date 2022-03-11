@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :shopping_carts
 
-  validates :name, :surname, presence: true
+  validates :email, :name, :surname, :password, :password_confirmation, presence: true
 
   # Instance methods
 
