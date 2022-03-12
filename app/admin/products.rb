@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-
+  menu priority: 2
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,7 +14,7 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
   permit_params :name, :description, :photo, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :price, :_destroy]
 
   show do
