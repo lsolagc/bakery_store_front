@@ -6,6 +6,8 @@
 
 <h1>Products</h1>
 
+<%= render 'search', products: @products %>
+
 <% @products.each do |product| %>
   <div class='row align-items-center border border-shadow mx-0 mb-3 py-2'>
     <div class="col">
