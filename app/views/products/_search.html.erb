@@ -20,8 +20,13 @@
         <% end %>
       </div>
       <div class="col-md text-end">
-        <%= link_to "Clear search", request.path, class: "btn btn-default" %>
+        <%= link_to "Clear", request.path, class: "btn btn-link" %>
         <%= f.submit "Search", class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <div class="row align-items-center my-2 d-none d-md-block">
+      <div class="col">
+        <%= @search_is_being_made ? "(Filters are being applied. Showing #{@q.result.count} result(s).)" : nil %>
       </div>
     </div>
   <% end %>
