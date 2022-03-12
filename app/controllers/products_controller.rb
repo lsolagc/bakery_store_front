@@ -1,6 +1,11 @@
 class ProductsController < InheritedResources::Base
   before_action :authenticate_user!, only: [:add_to_cart]
 
+  def index
+    @q = Product.ransack(params[:q])
+    @products = @q.result
+  end
+
   def add_to_cart
     if product_instance = current_user.shopping_cart.product_instances.detect{|pi| pi.product == set_product }
       product_instance.quantity += 1
