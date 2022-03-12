@@ -2,6 +2,7 @@ class ProductsController < InheritedResources::Base
   before_action :authenticate_user!, only: [:add_to_cart]
 
   def index
+    @search_is_being_made = params[:q].present?
     @q = Product.ransack(params[:q])
     @products = @q.result
   end
@@ -25,5 +26,6 @@ class ProductsController < InheritedResources::Base
     def set_product
       Product.find(params["id"])
     end
+
 
 end

@@ -1,11 +1,9 @@
 <div class="d-flex justify-content-between border d-block d-md-none">
-  <button class="btn fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
-    Search
+  <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
+    <span class="fs-5">Search</span> <%= @search_is_being_made ? "(Filters are being applied. Showing #{@q.result.count} result(s).)" : nil %>
   </button>
   <button class="btn bi bi-chevron-down" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
   </button>
-  <%# <button role='button' href="#searchCollapse" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">Search</a> %>
-  <%# <button role='button' href="#searchCollapse" class='bi bi-chevron-down' data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse"></a> %>
 </div>
 <div class="collapse d-md-block" id="searchCollapse" >
   <%= search_form_for @q do |f| %>
@@ -21,7 +19,8 @@
           <%= kind.name %>
         <% end %>
       </div>
-      <div class="col-md text-md-end text-center">
+      <div class="col-md text-end">
+        <%= link_to "Clear search", request.path, class: "btn btn-default" %>
         <%= f.submit "Search", class: 'btn btn-primary' %>
       </div>
     </div>
