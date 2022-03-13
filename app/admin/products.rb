@@ -17,6 +17,12 @@ ActiveAdmin.register Product do
 
   permit_params :name, :description, :photo, combinations_attributes: [:id, :product_id, :kind_id, :size_id, :price, :_destroy]
 
+  filter :name
+  filter :sizes
+  filter :kinds
+  filter :created_at
+  filter :updated_at
+
   show do
     panel "Product Details" do
       attributes_table_for product do

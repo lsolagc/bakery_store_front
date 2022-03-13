@@ -2,6 +2,7 @@ class ShoppingCart < ApplicationRecord
   belongs_to :user
 
   has_many :product_instances
+  has_many :products, through: :product_instances
 
   enum status: [:open, :ordered, :in_progress, :ready_for_delivery, :completed, :canceled]
   enum payment_status: [:waiting_for_payment_confirmation, :paid]

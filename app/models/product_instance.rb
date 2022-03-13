@@ -8,7 +8,7 @@ class ProductInstance < ApplicationRecord
   delegate :price, to: :combination
 
   validates :combination, presence: true, on: :finalize_order
-  
+
   validates :quantity, presence: true
   validates_numericality_of :quantity, only_integer: true, greater_than: 0
   validates :total_value, presence: true

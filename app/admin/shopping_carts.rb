@@ -17,4 +17,11 @@ ActiveAdmin.register ShoppingCart do
 
   permit_params :user_id, :status, :total_value, :payment_status
 
+  filter :user
+  filter :products
+  filter :status, as: :select
+  filter :total_value
+  filter :created_at
+  filter :updated_at
+
 end
