@@ -1,14 +1,14 @@
-<h2>Sign up</h2>
+<h2><%= t('devise.registrations.new.sign_up') %></h2>
 
 <%= simple_form_for @user, url: registration_path(@user) do |f| %>
 
   <%= f.input :name, wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
   <%= f.input :surname, wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
   <%= f.input :email, wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
-  <%= f.input :password, hint: @minimum_password_length ? "#{@minimum_password_length} characters minimum" : "", wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
+  <%= f.input :password, hint: @minimum_password_length ? t('devise.passwords.edit.characters_minimum', minimum_size: @minimum_password_length) : "", wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
   <%= f.input :password_confirmation, wrapper_html: { class: 'row align-items-center my-3'}, input_html: {class: 'col', style:'margin-right: 15px'}, label_html: { class: 'col-6 col-lg-4'} %>
 
-  <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+  <%= f.button :submit, t('devise.registrations.new.sign_up'), class: 'btn btn-primary' %>
 
 <% end %>
 

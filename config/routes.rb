@@ -6,19 +6,19 @@ Rails.application.routes.draw do
       get 'set_combination'
     end
   end
-  resources :shopping_carts, except: [:new] do
+  resources :shopping_carts, except: [:new, :create, :destroy] do
     member do
       post  'finalize_order'
       get   'cancel_order'
     end
   end
-  resources :products do
+  resources :products, only: [:show, :index] do
     member do
       get 'add_to_cart'
     end
   end
-  resources :sizes
-  resources :kinds
+  # resources :sizes
+  # resources :kinds
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => {:registrations => "registrations"}
   ActiveAdmin.routes(self)

@@ -11,7 +11,7 @@
             <% if product_instance.product.photo.present? %>
               <%= image_tag(rails_blob_url(product_instance.product.photo), class: 'thumbnail' ) %>
             <% else %>
-              "No photo"
+              <%= t('activerecord.attributes.product.photo.none') %>
             <% end %>
           </div>
           <div class="col-md">
@@ -22,7 +22,7 @@
                         as: :select,
                         collection: product_instance.combinations.map{ |c| [c.display_name, c.id] },
                         selected: product_instance.combination.presence,
-                        prompt: "Select your product combination",
+                        prompt: t('form.product.input.prompt.combination'),
                         error: product_instance.errors['combination'].present? ? "Combination #{product_instance.errors['combination'].join(',')}" : nil,
                         label_html: { class: 'd-md-none d-block' },
                         input_html: { disabled: @shopping_cart.disabled_inputs? } %>
@@ -37,13 +37,13 @@
                         label_html: { class: 'd-md-none d-block' },
                         input_html: { disabled: true,
                                       class: 'w-100',
-                                      value: number_to_currency(product_instance.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
+                                      value: number_to_currency(product_instance.total_value) } %>
           </div>
           <% if @shopping_cart.editable? %>
             <div class="row align-items-center mx-0">
               <div class="col text-end">
                 <%= link_to product_instance_path(product_instance), method: "delete" do %>
-                  <span class="bi bi-trash">Remove from cart</span>
+                  <span class="bi bi-trash"><%= t('form.product_instance.remove_from_cart') %></span>
                 <% end %>
               </div>
             </div>
@@ -58,7 +58,7 @@
                     as: :string,
                     input_html: { disabled: true,
                                   class: 'w-100',
-                                  value: number_to_currency(@shopping_cart.total_value, unit: "R$", separator: ",", format: "%u %n") } %>
+                                  value: number_to_currency(@shopping_cart.total_value) } %>
       </div>
       <div class="col-md">
         <%= f.input :due_date,
@@ -71,10 +71,10 @@
 
   <div class="my-3">
     <% if @shopping_cart.editable? %>
-      <%= f.button :submit, value: 'Finalize order', class: 'btn btn-primary' %>
+      <%= f.button :submit, value: t('form.shopping_cart.button.finalize_order'), class: 'btn btn-primary' %>
     <% end %>
     <% if @shopping_cart.cancellable_by_owner? %>
-      <%= link_to "Cancel my order", cancel_order_shopping_cart_path(@shopping_cart), type: 'button', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      <%= link_to t('form.shopping_cart.button.cancel_order'), cancel_order_shopping_cart_path(@shopping_cart), type: 'button', class: 'btn btn-danger', data: { confirm: t('form.data.confirm') } %>
     <% end %>
   </div>
 <% end %>

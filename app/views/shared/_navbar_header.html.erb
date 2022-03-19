@@ -7,17 +7,17 @@
         <ul class="navbar-nav flex-row">
           <% if user_signed_in? %>
             <li class="nav-item d-none d-sm-block">
-              <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link mx-2' %>
+              <%= link_to t('navigation.links.my_cart'), edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link mx-2' %>
             </li>
             <li class="nav-item">
-              <%= link_to "My account", edit_user_registration_path, class: 'nav-link mx-2' %>
+              <%= link_to t('navigation.links.my_account'), edit_user_registration_path, class: 'nav-link mx-2' %>
             </li>
             <li class="nav-item d-none d-sm-block">
-              <%= link_to "Logout", destroy_user_session_path, method: "delete", class: 'nav-link mx-2' %>
+              <%= link_to t('devise.sessions.destroy.sign_out'), destroy_user_session_path, method: "delete", class: 'nav-link mx-2' %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, {class: 'nav-link mx-2'} %>
+              <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path, {class: 'nav-link mx-2'} %>
             </li>
           <% end %>
         </ul>
@@ -28,17 +28,17 @@
       <div class="navbar-collapse collapse order-3 order-md-2" id="navbarCollapse" style="">
         <ul class="navbar-nav me-auto mb-md-0 text-end">
           <li class="nav-item">
-            <%= link_to "Products", products_path, { class: 'nav-link'} %>
+            <%= link_to t('activerecord.models.product', count: 2), products_path, { class: 'nav-link'} %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item d-block d-sm-none">
-              <%= link_to "My cart", edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link' %>
+              <%= link_to t('navigation.links.my_cart'), edit_shopping_cart_path(current_user.shopping_cart), class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "My orders", shopping_carts_path, class: 'nav-link' %>
+              <%= link_to t('navigation.links.my_orders'), shopping_carts_path, class: 'nav-link' %>
             </li>
             <li class="nav-item d-block d-sm-none">
-              <%= link_to "Logout", destroy_user_session_path, method: "delete", class: 'nav-link' %>
+              <%= link_to t('devise.sessions.destroy.sign_out'), destroy_user_session_path, method: "delete", class: 'nav-link' %>
             </li>
           <% end %>
         </ul>

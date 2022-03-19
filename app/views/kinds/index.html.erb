@@ -4,13 +4,13 @@
   </div>
 <% end %>
 
-<h1>Kinds</h1>
+<h1><%= Kind.model_name.human %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th><%= t('activerecord.attributes.kind.name') %></th>
+      <th><%= t('activerecord.attributes.kind.description') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
       <tr>
         <td><%= kind.name %></td>
         <td><%= kind.description %></td>
-        <td><%= link_to 'Show', kind %></td>
-        <td><%= link_to 'Edit', edit_kind_path(kind) %></td>
-        <td><%= link_to 'Destroy', kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('navigation.links.show'), kind %></td>
+        <td><%= link_to t('navigation.links.edit'), edit_kind_path(kind) %></td>
+        <td><%= link_to t('navigation.links.destroy'), kind, method: :delete, data: { confirm: t('form.data.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Kind', new_kind_path %>
+<%= link_to t('navigation.links.new', resource: Kind.model_name.human), new_kind_path %>

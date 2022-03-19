@@ -6,21 +6,21 @@
 
 <div class='row align-items-center'>
   <div class="col">
-    <h1>Showing Order #<%= @shopping_cart.id %></h1>
+    <h1><%= t('form.headers.show', resource: ShoppingCart.model_name.human, id: @shopping_cart.id) %></h1>
     <h3>
-      <span class="<%= status_badge_style(@shopping_cart) %>"><%= @shopping_cart.status.humanize %></span>
-      <span class="<%= payment_status_badge_style(@shopping_cart) %>"><%= @shopping_cart.payment_status.humanize %></span>
+      <span class="<%= status_badge_style(@shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.status.#{@shopping_cart.status}") %></span>
+      <span class="<%= payment_status_badge_style(@shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.payment_status.#{@shopping_cart.payment_status}") %></span>
     </h3>
   </div>
 </div>
 
 <%= render partial: 'form', shopping_cart: @shopping_cart %>
 
-<% if pix_payments_enabled? && !@shopping_cart.paid? %>
+<% if pix_payments_enabled? && !@shopping_cart.paid? && !@shopping_cart.canceled? %>
   <div class="row align-items-center mb-3">
     <div class="col">
       <button name="button" id="buttonPixPayment" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPixPayment">
-        Generate QR Code for payment
+        <%= t('form.shopping_cart.button.generate_qr_code') %>
       </button>
     </div>
   </div>
@@ -29,13 +29,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalPixPaymentLabel">Payment - QR Code</h5>
+          <h5 class="modal-title" id="modalPixPaymentLabel"><%= t('modal.qr_code.title') %></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <span hidden></span>
           <div class="alert alert-warning">
-            Please remember to check your payment details before you finish. We are not responsible for transfers made by mistake to other recipients.
+            <%= t('modal.qr_code.body') %>
           </div>
           <div class="row text-center">
             <div class="col">
@@ -45,8 +45,8 @@
           <div class="row text-center">
             <div class="col" >
               <span id="spanPixBrCode" hidden="hidden"><%= @brcode %></span>
-              <a class="btn btn-primary copyable" tabindex="0" data-clipboard-target="#spanPixBrCode" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Copied!">
-                  Copy payment data to clipboard
+              <a class="btn btn-primary copyable" tabindex="0" data-clipboard-target="#spanPixBrCode" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="<%= t('modal.qr_code.button.popover') %>">
+                  <%= t('modal.qr_code.button.text') %>
               </a>
             </div>
           </div>
@@ -56,4 +56,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', shopping_carts_path %>
+<%= link_to t('navigation.links.back'), shopping_carts_path %>

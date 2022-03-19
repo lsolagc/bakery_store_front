@@ -1,6 +1,6 @@
-<h1>Editing Kind</h1>
+<h1><%= t('form.headers.edit', resource: Kind.model_name.human) %></h1>
 
 <%= render 'form', kind: @kind %>
 
-<%= link_to 'Show', @kind %> |
-<%= link_to 'Back', kinds_path %>
+<%= link_to t('navigation.links.show'), @kind %> |
+<%= link_to t('navigation.links.back'), kinds_path %>

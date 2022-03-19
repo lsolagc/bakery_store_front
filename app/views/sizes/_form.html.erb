@@ -1,15 +1,5 @@
 <%= form_with(model: size) do |form| %>
-  <% if size.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(size.errors.count, "error") %> prohibited this size from being saved:</h2>
-
-      <ul>
-        <% size.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_partial', resource: size %>
 
   <div class="field">
     <%= form.label :name %>

@@ -1,6 +1,6 @@
-<h1>Editing Product</h1>
+<h1><%= t('form.headers.new', resource: Product.model_name.human) %></h1>
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to t('navigation.links.show'), @product %> |
+<%= link_to t('navigation.links.back'), products_path %>

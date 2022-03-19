@@ -1,15 +1,5 @@
 <%= form_with(model: kind) do |form| %>
-  <% if kind.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(kind.errors.count, "error") %> prohibited this kind from being saved:</h2>
-
-      <ul>
-        <% kind.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_partial', resource: kind %>
 
   <div class="field">
     <%= form.label :name %>

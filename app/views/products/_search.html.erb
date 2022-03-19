@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between border d-block d-md-none">
   <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
-    <span class="fs-5">Search</span> <%= @search_is_being_made ? "(Filters are being applied. Showing #{@q.result.count} result(s).)" : nil %>
+    <span class="fs-5"><%= t('form.search.actions.search') %></span> <%= @search_is_being_made ? t('form.search.filters_being_applied', count: @q.result.count) : nil %>
   </button>
   <button class="btn bi bi-chevron-down" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse" aria-expanded="false" aria-controls="searchCollapse">
   </button>
@@ -10,7 +10,7 @@
     <div class="row gap-2 align-items-center my-2">
       <div class="col-md-5">
         <%= f.search_field  :name_i_cont,
-                            placeholder: "Search on our product's names",
+                            placeholder: t('form.search.placeholders.product.name'),
                             class: 'form-control' %>
       </div>
       <div class="col-md">
@@ -20,13 +20,13 @@
         <% end %>
       </div>
       <div class="col-md text-end">
-        <%= link_to "Clear", request.path, class: "btn btn-link" %>
-        <%= f.submit "Search", class: 'btn btn-primary' %>
+        <%= link_to t('form.search.actions.clear'), request.path, class: "btn btn-link" %>
+        <%= f.submit t('form.search.actions.search'), class: 'btn btn-primary' %>
       </div>
     </div>
     <div class="row align-items-center my-2 d-none d-md-block">
       <div class="col">
-        <%= @search_is_being_made ? "(Filters are being applied. Showing #{@q.result.count} result(s).)" : nil %>
+        <%= @search_is_being_made ? t('form.search.filters_being_applied', count: @q.result.count) : nil %>
       </div>
     </div>
   <% end %>

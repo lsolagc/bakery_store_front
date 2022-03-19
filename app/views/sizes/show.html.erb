@@ -5,14 +5,14 @@
 <% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= "#{@size.class.human_attribute_for :name}:" %></strong>
   <%= @size.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= "#{@size.class.human_attribute_for :description}:" %></strong>
   <%= @size.description %>
 </p>
 
-<%= link_to 'Edit', edit_size_path(@size) %> |
-<%= link_to 'Back', sizes_path %>
+<%= link_to t('navigation.links.edit'), edit_size_path(@size) %> |
+<%= link_to t('navigation.links.back'), sizes_path %>

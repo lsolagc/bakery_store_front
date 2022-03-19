@@ -4,17 +4,17 @@
   </div>
 <% end %>
 
-<h1>Orders</h1>
+<h1><%= ShoppingCart.model_name.human(count: 2) %></h1>
 
 <div class='row align-items-center border mx-0 py-2'>
   <div class="col-2 col-sm-2 col-md-2">
-    <b>ID</b>
+    <b><%= t('table.header.shopping_cart.id_indicator') %></b>
   </div>
   <div class="col col-sm-4 col-md-5 d-none d-sm-block">
-    <b>Order contents</b>
+    <b><%= t('table.header.shopping_cart.contents') %></b>
   </div>
   <div class="col">
-    <b>Order status</b>
+    <b><%= t('table.header.shopping_cart.status') %></b>
   </div>
   <div class="col"></div>
 </div>
@@ -34,11 +34,11 @@
       <% end %>
     </div>
     <div class="col">
-      <span class="<%= status_badge_style(shopping_cart) %>"><%= shopping_cart.status.humanize %></span>
-      <span class="<%= payment_status_badge_style(shopping_cart) %>"><%= shopping_cart.payment_status.humanize %></span>
+      <span class="<%= status_badge_style(shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.status.#{shopping_cart.status}") %></span>
+      <span class="<%= payment_status_badge_style(shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.payment_status.#{shopping_cart.payment_status}") %></span>
     </div>
     <div class="col text-center">
-      <%= link_to "See details", shopping_cart_path(shopping_cart) %>
+      <%= link_to t('navigation.links.show_details'), shopping_cart_path(shopping_cart) %>
     </div>
   </div>
 <% end %>

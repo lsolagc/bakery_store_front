@@ -5,14 +5,14 @@
 <% end %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= "#{@kind.class.human_attribute_for :name}:" %></strong>
   <%= @kind.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= "#{@kind.class.human_attribute_for :description}:" %></strong>
   <%= @kind.description %>
 </p>
 
-<%= link_to 'Edit', edit_kind_path(@kind) %> |
-<%= link_to 'Back', kinds_path %>
+<%= link_to t('navigation.links.edit'), edit_kind_path(@kind) %> |
+<%= link_to t('navigation.links.back'), kinds_path %>

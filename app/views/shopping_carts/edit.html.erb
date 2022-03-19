@@ -4,11 +4,11 @@
   </div>
 <% end %>
 
-<h1>Editing Shopping Cart</h1>
+<h1><%= t('form.headers.edit', resource: ShoppingCart.model_name.human) %></h1>
 
   <% if @shopping_cart.product_instances.empty? %>
     <div class="col card shadow fs-3 align-items-center py-2 mb-3">
-      <p class="mb-0" >Your shopping cart is empty!</p>
+      <p class="mb-0" ><%= t('form.shopping_cart.is_empty') %></p>
     </div>
   <% else %>
     <%= render 'form', shopping_cart: @shopping_cart %>

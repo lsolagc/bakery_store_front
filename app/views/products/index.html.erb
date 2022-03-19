@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<h1>Products</h1>
+<h1><%= Product.model_name.plural.capitalize %></h1>
 
 <%= render 'search', products: @products %>
 
@@ -14,7 +14,7 @@
       <% if product.photo.present? %>
         <%= image_tag(rails_blob_url(product.photo), class: 'thumbnail' ) %>
       <% else %>
-        "No photo"
+        <%= t('activerecord.attributes.product.photo.none') %>
       <% end %>
     </div>
     <div class="col">
@@ -23,12 +23,12 @@
     <div class="col">
       <div class="row">
         <div class="col text-center">
-          <%= link_to 'Show', product %>
+          <%= link_to t('navigation.links.show'), product %>
         </div>
       </div>
       <div class="row">
         <div class="col text-center">
-          <%= link_to 'Add to cart', add_to_cart_product_path(product) %>
+          <%= link_to t('navigation.links.add_to_cart'), add_to_cart_product_path(product) %>
         </div>
       </div>
     </div>

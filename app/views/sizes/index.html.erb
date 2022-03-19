@@ -4,13 +4,13 @@
   </div>
 <% end %>
 
-<h1>Sizes</h1>
+<h1><%= Size.model_name.human %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th><%= t('activerecord.attributes.size.name') %></th>
+      <th><%= t('activerecord.attributes.size.description') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
       <tr>
         <td><%= size.name %></td>
         <td><%= size.description %></td>
-        <td><%= link_to 'Show', size %></td>
-        <td><%= link_to 'Edit', edit_size_path(size) %></td>
-        <td><%= link_to 'Destroy', size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to link_to t('navigation.links.show'), size %></td>
+        <td><%= link_to link_to t('navigation.links.edit'), edit_size_path(size) %></td>
+        <td><%= link_to link_to t('navigation.links.destroy'), size, method: :delete, data: { confirm: t('form.data.confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Size', new_size_path %>
+<%= link_to t('navigation.links.new', resource: Size.model_name.human), new_size_path %>
