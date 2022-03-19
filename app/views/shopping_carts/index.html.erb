@@ -34,8 +34,8 @@
       <% end %>
     </div>
     <div class="col">
-      <span class="<%= status_badge_style(shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.status.#{shopping_cart.status}") %></span>
-      <span class="<%= payment_status_badge_style(shopping_cart) %>"><%= t("activerecord.attributes.shopping_cart.payment_status.#{shopping_cart.payment_status}") %></span>
+      <%= status_badge(shopping_cart) %>
+      <%= payment_status_badge(shopping_cart) %>
     </div>
     <div class="col text-center">
       <%= link_to t('navigation.links.show_details'), shopping_cart_path(shopping_cart) %>
