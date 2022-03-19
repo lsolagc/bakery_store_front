@@ -204,6 +204,7 @@ pt-BR:
         last_sign_in_at: Último acesso em
         last_sign_in_ip: Último IP de acesso
         locked_at: Bloqueado em
+        name: Nome
         password: Senha
         password_confirmation: Confirme sua senha
         remember_created_at: Lembrar criado em
@@ -211,6 +212,7 @@ pt-BR:
         reset_password_sent_at: Resetar senha enviado em
         reset_password_token: Resetar token de senha
         sign_in_count: Contagem de acessos
+        surname: Sobrenome
         unconfirmed_email: E-mail não confirmado
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
@@ -415,7 +417,7 @@ pt-BR:
       remove_from_cart: Remover do carrinho
     search:
       actions:
-        clear: Claro
+        clear: Limpar
         search: Procurar
       filters_being_applied:
         one: (Os filtros estão sendo aplicados. Mostrando resultado %{count}.)

@@ -198,6 +198,8 @@ en:
         current_password: Current password
         current_sign_in_at: Current sign in at
         current_sign_in_ip: Current sign in IP
+        name: Name
+        surname: Surname
         email: E-mail
         encrypted_password: Encrypted password
         failed_attempts: Failed attempts
