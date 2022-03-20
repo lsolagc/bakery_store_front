@@ -1,4 +1,5 @@
 class ProductsController < InheritedResources::Base
+  include ProductsHelper
   before_action :authenticate_user!, only: [:add_to_cart]
 
   def index

@@ -336,7 +336,7 @@ pt-BR:
         cancel_my_account: Cancelar minha conta
         currently_waiting_confirmation_for_email: 'No momento esperando por: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: deixe em branco caso não queira alterá-la
-        title: Editar %{resource}
+        title: Minha conta
         unhappy: Não está contente?
         update: Atualizar
         we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar suas mudanças
@@ -418,7 +418,7 @@ pt-BR:
     search:
       actions:
         clear: Limpar
-        search: Procurar
+        search: Buscar
       filters_being_applied:
         one: (Os filtros estão sendo aplicados. Mostrando resultado %{count}.)
         other: (Os filtros estão sendo aplicados. Mostrando %{count} resultados.)
@@ -449,7 +449,7 @@ pt-BR:
       title: Pagamento - Código QR
   navigation:
     links:
-      add_to_cart: Adicionar ao Carrinho
+      add_to_cart: Adicionar ao carrinho
       back: Voltar
       destroy: Destruir
       edit: Editar
@@ -464,9 +464,10 @@ pt-BR:
       format:
         delimiter: ','
         format: '%u %n'
-        precision: '2'
+        precision: 2
         separator: .
-        unit: $
+        unit: R$
+      price_and_up: A partir de %{price}
   simple_form:
     error_notification:
       default_message: 'Alguns erros foram encontrados, por favor verifique:'
