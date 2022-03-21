@@ -174,6 +174,9 @@ pt-BR:
         photo:
           none: Nenhuma foto
         updated_at: Atualizada
+      rating:
+        comment: Comentário
+        score: Nota
       shopping_cart:
         payment_status:
           paid: Pago
@@ -232,6 +235,9 @@ pt-BR:
       product:
         one: produtos
         other: Produtos
+      rating:
+        one: Avaliação
+        other: Avaliações
       shopping_cart:
         one: Ordem
         other: Pedidos
@@ -405,6 +411,8 @@ pt-BR:
   form:
     data:
       confirm: Tem certeza?
+      disable_with:
+        saving: Salvando...
     headers:
       edit: Editando %{recurso}
       new: Novo %{recurso}
@@ -415,6 +423,8 @@ pt-BR:
           combination: Selecione sua combinação de produtos
     product_instance:
       remove_from_cart: Remover do carrinho
+    ratings:
+      submit: Salvar minha avaliação
     search:
       actions:
         clear: Limpar
@@ -435,6 +445,8 @@ pt-BR:
     submit:
       create: Criar %{model}
       update: Atualizar %{model}
+  messages:
+    login_to_leave rating: Faça login para avaliar este produto
   modal:
     qr_code:
       body: >-
@@ -468,6 +480,15 @@ pt-BR:
         separator: .
         unit: R$
       price_and_up: A partir de %{price}
+  ratings:
+    new:
+      average_rating:
+        one: '%{average}/5.0, de %{count} avaliação'
+        other: '%{average}/5.0, de %{count} avaliações'
+      title: Avaliações
+    unit:
+      one: '%{count} Estrela'
+      other: '%{count} Estrelas'
   simple_form:
     error_notification:
       default_message: 'Alguns erros foram encontrados, por favor verifique:'

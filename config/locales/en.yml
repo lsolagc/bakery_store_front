@@ -174,6 +174,9 @@ en:
         photo:
           none: No photo
         updated_at: Updated
+      rating:
+        comment: Comment
+        score: Score
       shopping_cart:
         payment_status:
           paid: Paid
@@ -232,6 +235,9 @@ en:
       product:
         one: Product
         other: Products
+      rating:
+        one: Rating
+        other: Ratings
       shopping_cart:
         one: Order
         other: Orders
@@ -404,6 +410,8 @@ en:
   form:
     data:
       confirm: Are you sure?
+      disable_with:
+        saving: Saving...
     headers:
       edit: Editing %{resource}
       new: New %{resource}
@@ -414,6 +422,8 @@ en:
           combination: Select your product combination
     product_instance:
       remove_from_cart: Remove from cart
+    ratings:
+      submit: Save my rating
     search:
       actions:
         clear: Clear
@@ -434,6 +444,8 @@ en:
     submit:
       create: Create %{model}
       update: Update %{model}
+  messages:
+    login_to_leave rating: Login to rate this product
   modal:
     qr_code:
       body: >-
@@ -464,6 +476,15 @@ en:
         separator: .
         unit: $
       price_and_up: '%{price} and up'
+  ratings:
+    new:
+      average_rating:
+        one: '%{average}/5.0, from %{count} rating'
+        other: '%{average}/5.0, from %{count} ratings'
+      title: Reviews
+    unit:
+      one: '%{count} Star'
+      other: '%{count} Stars'
   simple_form:
     error_notification:
       default_message: 'Please review the problems below:'

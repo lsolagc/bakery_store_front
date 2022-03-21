@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       get 'add_to_cart'
     end
+    resources :ratings, only: [:create]
   end
   # resources :sizes
   # resources :kinds

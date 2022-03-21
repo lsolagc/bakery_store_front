@@ -30,10 +30,12 @@
   </div>
 </div>
 
-<div class="row align-items-center mt-3">
+<div class="row align-items-center my-3">
   <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2 col-xxl-2">&nbsp;</div>
   <div class="col">
     <img src=<%= rails_blob_url(@product.photo)%> class='thumbnail' >
   </div>
   <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2 col-xxl-2">&nbsp;</div>
 </div>
+
+<%= render 'ratings/product_ratings', product: @product %>

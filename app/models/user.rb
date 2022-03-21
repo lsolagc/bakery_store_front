@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shopping_carts
+  has_many :ratings
 
   validates :email, :name, :surname, :password, :password_confirmation, presence: true
 

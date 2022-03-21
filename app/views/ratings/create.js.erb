@@ -1,0 +1,36 @@
+var rating_area = $('#ratings_container')[0];
+var first_rating = rating_area.firstElementChild;
+
+var new_rating_div_rating = document.createElement('div');
+new_rating_div_rating.className = 'col';
+var new_rating_h5_rating = document.createElement('h5');
+new_rating_h5_rating.appendChild(document.createTextNode("<%= t('ratings.unit', count: @rating.score) %>"));
+new_rating_div_rating.appendChild(new_rating_h5_rating)
+
+var new_rating_div_user = document.createElement('div');
+new_rating_div_user.className = 'col text-end';
+new_rating_div_user.appendChild(document.createTextNode('<%= @rating.user.display_name %>'));
+
+var new_rating_first_row = document.createElement('div');
+new_rating_first_row.className = 'row';
+new_rating_first_row.appendChild(new_rating_div_rating);
+new_rating_first_row.appendChild(new_rating_div_user);
+
+var new_rating_div_comment = document.createElement('div');
+new_rating_div_comment.className = 'col';
+new_rating_div_comment.appendChild(document.createTextNode("\"<%= @rating.comment %>\""));
+
+var new_rating_second_row = document.createElement('div');
+new_rating_second_row.className = 'row';
+new_rating_second_row.appendChild(new_rating_div_comment);
+
+var new_rating_wrapper = document.createElement('div');
+new_rating_wrapper.className = 'comment';
+new_rating_wrapper.appendChild(new_rating_first_row);
+new_rating_wrapper.appendChild(new_rating_second_row);
+
+rating_area.insertBefore(new_rating_wrapper, first_rating);
+rating_area.insertBefore(document.createElement('hr'), first_rating);
+
+var div_rating_average = $('#rating_average')[0]
+div_rating_average.textContent = "<%= t('ratings.new.average_rating', average: @rating.product.average_rating, count: @rating.product.ratings.size) %>"

@@ -1,0 +1,56 @@
+<div class='row border border-shadow mx-0'>
+  <div class='row align-items-center mt-3'>
+    <div class="col">
+      <span class='fs-2'><%= t('ratings.new.title') %></span>
+    </div>
+    <% if product.ratings.size > 0  %>
+      <div class="col text-end">
+        <span class='fs-4' id='rating_average'>
+          <%= t('ratings.new.average_rating', average: product.average_rating, count: product.ratings.size) %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col"><hr></div>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= render 'ratings/form', rating: product.ratings.build %>
+  <% else %>
+    <div class="row align-items-center mb-3">
+      <div class="col text-center">
+        <%= link_to t('messages.login_to_leave rating'), new_user_session_path %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col"><hr></div>
+  </div>
+
+  <div class="row align-items-center">
+    <div class="col"  id='ratings_container'>
+      <% @product.ratings.order(created_at: :desc).select(&:persisted?).each do |rating| %>
+        <div class='comment' >
+          <div class="row align-items-center">
+            <div class="col">
+              <h5><%= t('ratings.unit', count: rating.score).downcase %></h5>
+            </div>
+            <div class="col text-end">
+              <%= rating.user.display_name %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              "<%= rating.comment %>"
+            </div>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+
+</div>
