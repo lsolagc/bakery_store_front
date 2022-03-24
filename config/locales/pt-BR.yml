@@ -414,9 +414,9 @@ pt-BR:
       disable_with:
         saving: Salvando...
     headers:
-      edit: Editando %{recurso}
+      edit: Editando %{resource}
       new: Novo %{recurso}
-      show: Mostrando %{recurso}
+      show: Mostrando %{resource}
     product:
       input:
         prompt:

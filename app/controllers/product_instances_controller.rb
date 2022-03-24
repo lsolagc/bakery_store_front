@@ -1,6 +1,6 @@
 class ProductInstancesController < ApplicationController
   before_action :set_product_instance
-  
+
   def set_quantity
     @product_instance.quantity = product_instance_params['quantity'].to_i
     respond_to do |format|
@@ -14,9 +14,13 @@ class ProductInstancesController < ApplicationController
   end
 
   def set_combination
-    @product_instance.combination = Combination.find(product_instance_params['combination_id'])
+    begin
+      @product_instance.combination = Combination.find(product_instance_params['combination_id'])
+    rescue ActiveRecord::RecordNotFound => exception
+      @product_instance.combination = nil
+    end
     respond_to do |format|
-      if @product_instance.save
+      if @product_instance.save(context: :set_combination)
         format.json { render :set_combination, status: :ok }
         @product_instance.shopping_cart.save!(validate: false)
       else

@@ -8,8 +8,8 @@
   <div class="col">
     <h1><%= t('form.headers.show', resource: ShoppingCart.model_name.human, id: @shopping_cart.id) %></h1>
     <h3>
-      <%= status_badge(shopping_cart) %>
-      <%= payment_status_badge(shopping_cart) %>
+      <%= status_badge(@shopping_cart) %>
+      <%= payment_status_badge(@shopping_cart) %>
     </h3>
   </div>
 </div>

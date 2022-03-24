@@ -1,0 +1,4 @@
+product_one_photo_attachment:
+  name: photo
+  record: one (Product)
+  blob: product_one_photo_blob

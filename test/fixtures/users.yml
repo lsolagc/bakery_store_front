@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  name: User
+  surname: One
+  email: user@one.com
+
+create_shopping_cart_for_user_if_none_exists:
+  name: User
+  surname: Example One
+  email: user@exampleone.com
 # column: value
 #
-two: {}
+# two: {}
 # column: value

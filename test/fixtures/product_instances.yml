@@ -2,10 +2,13 @@
 
 one:
   combination: one
+  product: one
   quantity: 1
-  total_value: 
+  total_value: 10
+  shopping_cart: one
 
 two:
   combination: two
+  product: two
   quantity: 1
-  total_value: 
+  total_value: 20

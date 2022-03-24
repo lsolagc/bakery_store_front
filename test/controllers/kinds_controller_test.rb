@@ -5,44 +5,22 @@ class KindsControllerTest < ActionDispatch::IntegrationTest
     @kind = kinds(:one)
   end
 
-  test "should get index" do
-    get kinds_url
-    assert_response :success
-  end
+  routes = [
+    {action: 'index', method: :get, url: '/kinds', params: nil},
+    {action: 'new', method: :get, url: '/kinds/new', params: nil},
+    {action: 'create', method: :post, url: '/kinds', params: { kind: { description: 'description', name: 'name' } }},
+    {action: 'show', method: :get, url: '/kinds/1', params: nil},
+    {action: 'edit', method: :get, url: '/kinds/1/edit', params: nil},
+    {action: 'update', method: :patch, url: '/kinds/1', params: { kind: { description: 'description', name: 'name' } }},
+    {action: 'destroy', method: :delete, url: '/kinds/1', params: nil},
+  ]
 
-  test "should get new" do
-    get new_kind_url
-    assert_response :success
-  end
-
-  test "should create kind" do
-    assert_difference('Kind.count') do
-      post kinds_url, params: { kind: { description: @kind.description, name: @kind.name } }
+  routes.each do |route|
+    test "should not have #{route[:action]} route" do
+      assert_raises(ActionController::RoutingError) do
+        send(route[:method], route[:url], params: route[:params])
+      end
     end
-
-    assert_redirected_to kind_url(Kind.last)
   end
 
-  test "should show kind" do
-    get kind_url(@kind)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_kind_url(@kind)
-    assert_response :success
-  end
-
-  test "should update kind" do
-    patch kind_url(@kind), params: { kind: { description: @kind.description, name: @kind.name } }
-    assert_redirected_to kind_url(@kind)
-  end
-
-  test "should destroy kind" do
-    assert_difference('Kind.count', -1) do
-      delete kind_url(@kind)
-    end
-
-    assert_redirected_to kinds_url
-  end
 end
