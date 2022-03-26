@@ -7,39 +7,24 @@ class ProductsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit products_url
-    assert_selector "h1", text: "Products"
-  end
+    assert_selector "h1", text: Product.model_name.human(count: 2).capitalize
+    assert_selector "form.product_search" # should have search form
 
-  test "creating a Product" do
-    visit products_url
-    click_on "New Product"
+    assert_selector "div.product", count: Product.count
 
-    fill_in "Description", with: @product.description
-    fill_in "Name", with: @product.name
-    click_on "Create Product"
-
-    assert_text "Product was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Product" do
-    visit products_url
-    click_on "Edit", match: :first
-
-    fill_in "Description", with: @product.description
-    fill_in "Name", with: @product.name
-    click_on "Update Product"
-
-    assert_text "Product was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Product" do
-    visit products_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+    all("div.product").each do |element|
+      image_or_placeholder_text = element.all("div.col > img.thumbnail").first || element.find('div.col', text: I18n.t('activerecord.attributes.product.photo.none'))
+      assert image_or_placeholder_text
+      assert element.find_link I18n.t('navigation.links.show')
+      assert element.find_link I18n.t('navigation.links.add_to_cart')
     end
-
-    assert_text "Product was successfully destroyed"
   end
+
+  test "showing a product" do
+    visit product_url(@product)
+
+    assert_selector "span", text: @product.name
+    assert find_link I18n.t('navigation.links.add_to_cart')
+  end
+
 end

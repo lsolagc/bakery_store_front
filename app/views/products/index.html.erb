@@ -4,13 +4,13 @@
   </div>
 <% end %>
 
-<h1><%= Product.model_name.plural.capitalize %></h1>
+<h1><%= Product.model_name.human(count: 2).capitalize %></h1>
 
 <%= render 'search', products: @products %>
 
 <% @products.each do |product| %>
-  <div class='row align-items-center border border-shadow mx-0 mb-3 py-2'>
-    <div class="col">
+  <div class='row align-items-center border border-shadow product mx-0 mb-3 py-2'>
+    <div class="col photo">
       <% if product.photo.present? %>
         <%= image_tag(rails_blob_url(product.photo), class: 'thumbnail' ) %>
       <% else %>

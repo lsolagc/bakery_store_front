@@ -7,35 +7,35 @@ class ShoppingCartsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit shopping_carts_url
-    assert_selector "h1", text: "Shopping Carts"
+    assert_selector "div", text: Product.model_name.human(count: 2).capitalize
   end
 
-  test "creating a Shopping cart" do
-    visit shopping_carts_url
-    click_on "New Shopping Cart"
+  # test "creating a Shopping cart" do
+  #   visit shopping_carts_url
+  #   click_on "New Shopping Cart"
 
-    click_on "Create Shopping cart"
+  #   click_on "Create Shopping cart"
 
-    assert_text "Shopping cart was successfully created"
-    click_on "Back"
-  end
+  #   assert_text "Shopping cart was successfully created"
+  #   click_on "Back"
+  # end
 
-  test "updating a Shopping cart" do
-    visit shopping_carts_url
-    click_on "Edit", match: :first
+  # test "updating a Shopping cart" do
+  #   visit shopping_carts_url
+  #   click_on "Edit", match: :first
 
-    click_on "Update Shopping cart"
+  #   click_on "Update Shopping cart"
 
-    assert_text "Shopping cart was successfully updated"
-    click_on "Back"
-  end
+  #   assert_text "Shopping cart was successfully updated"
+  #   click_on "Back"
+  # end
 
-  test "destroying a Shopping cart" do
-    visit shopping_carts_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
+  # test "destroying a Shopping cart" do
+  #   visit shopping_carts_url
+  #   page.accept_confirm do
+  #     click_on "Destroy", match: :first
+  #   end
 
-    assert_text "Shopping cart was successfully destroyed"
-  end
+  #   assert_text "Shopping cart was successfully destroyed"
+  # end
 end
