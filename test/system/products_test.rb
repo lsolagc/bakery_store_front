@@ -27,4 +27,14 @@ class ProductsTest < ApplicationSystemTestCase
     assert find_link I18n.t('navigation.links.add_to_cart')
   end
 
+  test "adding a product to the shopping cart" do
+    user = users(:one)
+    sign_in user
+
+    visit product_url(@product)
+    click_link I18n.t('navigation.links.add_to_cart')
+    assert_selector "h1", text: I18n.t('form.headers.edit', resource: ShoppingCart.model_name.human)
+    assert_selector "div", text: @product.name
+  end
+
 end
