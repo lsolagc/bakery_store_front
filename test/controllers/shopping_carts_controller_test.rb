@@ -58,5 +58,11 @@ class ShoppingCartsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should redirect to index if trying to show another user's shopping cart" do
+    sign_in users(:one)
+
+    get shopping_cart_url(shopping_carts(:empty_shopping_cart))
+    assert_redirected_to shopping_carts_url
+  end
 
 end

@@ -6,6 +6,7 @@
 #
 one:
   user: one
+  status: open
 
 open_shopping_cart:
   user: one
@@ -14,3 +15,7 @@ open_shopping_cart:
 not_open_shopping_cart:
   user: one
   status: ordered
+
+empty_shopping_cart:
+  user: user_with_empty_shopping_cart
+  status: open
