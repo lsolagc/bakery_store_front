@@ -178,6 +178,7 @@ pt-BR:
         comment: Comentário
         score: Nota
       shopping_cart:
+        due_date: Data para retirada
         payment_status:
           paid: Pago
           waiting_for_payment_confirmation: Aguardando confirmação de pagamento
@@ -187,7 +188,8 @@ pt-BR:
           in_progress: Em andamento
           open: Abrir
           ordered: Encomendado
-          ready_for_delivery: Pronto para entrega
+          ready_for_delivery: Pronto para retirada
+        total_value: Valor total
       size:
         created_at: Criado
         description: Descrição
@@ -239,7 +241,7 @@ pt-BR:
         one: Avaliação
         other: Avaliações
       shopping_cart:
-        one: Ordem
+        one: Pedido
         other: Pedidos
       size:
         one: Tamanho
@@ -247,6 +249,48 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+    errors:
+      messages:
+        accepted: deve ser aceito
+        blank: não pode ficar em branco
+        confirmation: não é igual a %{attribute}
+        empty: não pode ficar vazio
+        equal_to: deve ser igual a %{count}
+        even: deve ser par
+        exclusion: não está disponível
+        greater_than: deve ser maior que %{count}
+        greater_than_or_equal_to: deve ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: não é válido
+        less_than: deve ser menor que %{count}
+        less_than_or_equal_to: deve ser menor ou igual a %{count}
+        model_invalid: 'A validação falhou: %{errors}'
+        not_a_number: não é um número
+        not_an_integer: não é um número inteiro
+        odd: deve ser ímpar
+        other_than: deve ser diferente de %{count}
+        present: deve ficar em branco
+        required: é obrigatório(a)
+        taken: já está em uso
+        too_long:
+          one: 'é muito longo (máximo: 1 caracter)'
+          other: 'é muito longo (máximo: %{count} caracteres)'
+        too_short:
+          one: 'é muito curto (mínimo: 1 caracter)'
+          other: 'é muito curto (mínimo: %{count} caracteres)'
+        wrong_length:
+          one: não possui o tamanho esperado (1 caracter)
+          other: não possui o tamanho esperado (%{count} caracteres)
+      models:
+        product_instance:
+          attributes:
+            combination:
+              blank: não pode estar em branco
+        shopping_cart:
+          attributes:
+            due_date:
+              blank: não pode estar em branco
+              too_soon: deve estar pelo menos 24 horas no futuro
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
@@ -416,7 +460,7 @@ pt-BR:
     headers:
       edit: Editando %{resource}
       new: Novo %{recurso}
-      show: Mostrando %{resource}
+      show: "Mostrando %{resource} #%{id}"
     product:
       input:
         prompt:
@@ -467,7 +511,7 @@ pt-BR:
       edit: Editar
       my_account: Minha conta
       my_cart: Meu carrinho
-      my_orders: Minhas ordens
+      my_orders: Meus pedidos
       new: Novo %{recurso}
       show: Mostrar
       show_details: Mostrar detalhes
