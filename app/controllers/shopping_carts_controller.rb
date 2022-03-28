@@ -4,11 +4,15 @@ class ShoppingCartsController < InheritedResources::Base
   before_action :authenticate_user!
 
   def index
-    @shopping_carts = ShoppingCart.where.not(status: 'open')
+    @shopping_carts = ShoppingCart.where(user: current_user).where.not(status: 'open')
   end
 
   def show
     @shopping_cart = ShoppingCart.find(params[:id])
+    unless @shopping_cart.user == current_user # redirect if user is not the owner of the shopping cart
+      redirect_to shopping_carts_path
+      return
+    end
     if @shopping_cart.open?
       redirect_to edit_shopping_cart_path(@shopping_cart)
       return
