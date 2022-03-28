@@ -10,6 +10,7 @@ include ApplicationHelper
 seeds_message("Creating users") do
   AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development? && AdminUser.find_by_email('admin@example.com').nil?
   User.create!(name: "Dummy", surname: "User", email: 'user@example.com', password: 'Teste123', password_confirmation: 'Teste123') if Rails.env.development? && User.find_by_email('user@example.com').nil?
+  User.create!(name: "Dummy", surname: "User 2", email: 'user2@example.com', password: 'Teste123', password_confirmation: 'Teste123') if Rails.env.development? && User.find_by_email('user2@example.com').nil?
 end
 
 seeds_message("Creating kinds") do
