@@ -14,4 +14,13 @@ class UserTest < ActiveSupport::TestCase
 
   end
 
+  test 'Should not create cart if there is already one open' do
+    user = users(:one)
+
+    assert_not_empty user.shopping_carts.open
+    assert_no_difference 'ShoppingCart.count' do
+      user.shopping_cart
+    end
+  end
+
 end
