@@ -21,7 +21,7 @@ class ShoppingCart < ApplicationRecord
   end
 
   def due_date_minimum_time
-    self.errors.add(:due_date, 'must be at least 24 hours in the future') if self.due_date.present? && self.due_date < (DateTime.current + 1.day).at_beginning_of_minute
+    self.errors.add(:due_date, :too_soon) if self.due_date.present? && self.due_date < (DateTime.current + 1.day).at_beginning_of_minute
   end
 
   def update_total_value
