@@ -113,7 +113,7 @@ pt-BR:
     logout: Sair
     main_content: Por favor, implemente %{model}
     move: Mover
-    new_model: Novo %{modelo}
+    new_model: Novo %{model}
     next: Próximo
     pagination:
       empty: Nenhum %{model} encontrado
@@ -172,6 +172,8 @@ pt-BR:
         description: Descrição
         name: Nome
         photo:
+          one: Foto
+          other: Fotos
           none: Nenhuma foto
         updated_at: Atualizada
       rating:
@@ -180,9 +182,11 @@ pt-BR:
       shopping_cart:
         due_date: Data para retirada
         payment_status:
+          one: Status de pagamento
           paid: Pago
           waiting_for_payment_confirmation: Aguardando confirmação de pagamento
         status:
+          one: Status
           canceled: Cancelado
           completed: Concluído
           in_progress: Em andamento
@@ -232,7 +236,7 @@ pt-BR:
         one: Comente
         other: Comentários
       kind:
-        one: Amável
+        one: Tipo
         other: Tipos
       product:
         one: produtos

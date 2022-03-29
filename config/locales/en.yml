@@ -173,6 +173,8 @@ en:
         name: Name
         photo:
           none: No photo
+          one: photo
+          other: Photos
         updated_at: Updated
       rating:
         comment: Comment
@@ -180,12 +182,14 @@ en:
       shopping_cart:
         due_date: Due date
         payment_status:
+          one: Payment status
           paid: Paid
           waiting_for_payment_confirmation: Waiting for payment confirmation
         status:
           canceled: Canceled
           completed: Completed
           in_progress: In progress
+          one: Status
           open: Open
           ordered: Ordered
           ready_for_delivery: Ready for delivery
