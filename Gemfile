@@ -36,6 +36,7 @@ gem 'devise-i18n', '~> 1.10', '>= 1.10.1'
 gem 'httparty'
 gem 'ransack'
 gem 'simple_form'
+gem "google-cloud-storage"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
