@@ -5,7 +5,7 @@ class ProductsController < InheritedResources::Base
   def index
     @search_is_being_made = params[:q].present?
     @q = Product.ransack(params[:q])
-    @products = @q.result
+    @products = @q.result.uniq
   end
 
   def add_to_cart
