@@ -172,9 +172,9 @@ pt-BR:
         description: Descrição
         name: Nome
         photo:
+          none: Nenhuma foto
           one: Foto
           other: Fotos
-          none: Nenhuma foto
         updated_at: Atualizada
       rating:
         comment: Comentário
@@ -186,10 +186,10 @@ pt-BR:
           paid: Pago
           waiting_for_payment_confirmation: Aguardando confirmação de pagamento
         status:
-          one: Status
           canceled: Cancelado
           completed: Concluído
           in_progress: Em andamento
+          one: Status
           open: Abrir
           ordered: Encomendado
           ready_for_delivery: Pronto para retirada
@@ -225,34 +225,6 @@ pt-BR:
         unconfirmed_email: E-mail não confirmado
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
-    models:
-      active_admin/comment:
-        one: Comente
-        other: Comentários
-      combination:
-        one: Combinação
-        other: Combinações
-      comment:
-        one: Comente
-        other: Comentários
-      kind:
-        one: Tipo
-        other: Tipos
-      product:
-        one: produtos
-        other: Produtos
-      rating:
-        one: Avaliação
-        other: Avaliações
-      shopping_cart:
-        one: Pedido
-        other: Pedidos
-      size:
-        one: Tamanho
-        other: Tamanhos
-      user:
-        one: Usuário
-        other: Usuários
     errors:
       messages:
         accepted: deve ser aceito
@@ -295,6 +267,34 @@ pt-BR:
             due_date:
               blank: não pode estar em branco
               too_soon: deve estar pelo menos 24 horas no futuro
+    models:
+      active_admin/comment:
+        one: Comente
+        other: Comentários
+      combination:
+        one: Combinação
+        other: Combinações
+      comment:
+        one: Comente
+        other: Comentários
+      kind:
+        one: Tipo
+        other: Tipos
+      product:
+        one: produtos
+        other: Produtos
+      rating:
+        one: Avaliação
+        other: Avaliações
+      shopping_cart:
+        one: Pedido
+        other: Pedidos
+      size:
+        one: Tamanho
+        other: Tamanhos
+      user:
+        one: Usuário
+        other: Usuários
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
@@ -464,7 +464,7 @@ pt-BR:
     headers:
       edit: Editando %{resource}
       new: Novo %{recurso}
-      show: "Mostrando %{resource} #%{id}"
+      show: 'Mostrando %{resource} #%{id}'
     product:
       input:
         prompt:
@@ -494,6 +494,11 @@ pt-BR:
       create: Criar %{model}
       update: Atualizar %{model}
   messages:
+    app:
+      description: Um MVP simples para o pequeno negócio da minha mãe
+    carousel:
+      next: Próximo
+      previous: Anterior
     login_to_leave rating: Faça login para avaliar este produto
   modal:
     qr_code:

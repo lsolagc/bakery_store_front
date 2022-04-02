@@ -493,6 +493,11 @@ en:
       create: Create %{model}
       update: Update %{model}
   messages:
+    app:
+      description: A simple MVP for my mom's small business
+    carousel:
+      next: Next
+      previous: Previous
     login_to_leave rating: Login to rate this product
   modal:
     qr_code:
